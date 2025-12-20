@@ -17,6 +17,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
+  final FocusNode focusNode = FocusNode();
   final _passwordController = TextEditingController();
   final AuthController _authController = Get.find<AuthController>();
   bool _isObsecurePassword = true;
@@ -70,6 +71,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   SizedBox(height: 40),
                   TextFormField(
+                    autofocus: true,
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -89,6 +91,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   SizedBox(height: 40),
                   TextFormField(
+                    focusNode: focusNode,
                     controller: _passwordController,
                     obscureText: _isObsecurePassword,
                     decoration: InputDecoration(
@@ -128,6 +131,7 @@ class _LoginViewState extends State<LoginView> {
                             : () {
                                 if (_formKey.currentState?.validate() ??
                                     false) {
+                                  focusNode.unfocus();
                                   _authController.signInWithEmailAndPassword(
                                     _emailController.text.trim(),
                                     _passwordController.text.trim(),
@@ -151,7 +155,7 @@ class _LoginViewState extends State<LoginView> {
                   Center(
                     child: TextButton(
                       onPressed: () {
-                        Get.toNamed(AppRoutes.forgotPassword);
+                        Get.toNamed(AppRoutes.forgotPasswordView);
                       },
                       child: Text("Forgot Password?"),
                     ),
@@ -180,7 +184,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       SizedBox(width: 12),
                       GestureDetector(
-                        onTap: () => Get.toNamed(AppRoutes.register),
+                        onTap: () => Get.toNamed(AppRoutes.registerView),
                         child: Text(
                           "Sign Up",
                           style: Theme.of(context).textTheme.bodyMedium

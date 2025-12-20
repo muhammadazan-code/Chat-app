@@ -43,7 +43,7 @@ class _SplashViewState extends State<SplashView>
 
     if (authController.isAuthenticated) {
       // Get.offAllNamed(AppRoutes.mainView);
-      Get.offAllNamed(AppRoutes.profile);
+      Get.offAllNamed(AppRoutes.profileView);
     } else {
       Get.offAllNamed(AppRoutes.loginView);
     }

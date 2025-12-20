@@ -1,5 +1,4 @@
 import 'package:chat_app/controllers/profile_controller.dart';
-import 'package:chat_app/models/user_model.dart';
 import 'package:chat_app/routes/app_routes.dart';
 import 'package:chat_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -224,7 +223,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                       title: Text("Change Password"),
                       trailing: Icon(Icons.arrow_forward_ios),
-                      onTap: () => Get.toNamed(AppRoutes.changePassword),
+                      onTap: () => Get.toNamed(AppRoutes.changePasswordView),
                     ),
                     Divider(height: 1, color: Colors.grey),
                     ListTile(

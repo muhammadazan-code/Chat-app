@@ -2,7 +2,6 @@ import 'package:chat_app/controllers/auth_controller.dart';
 import 'package:chat_app/models/user_model.dart';
 import 'package:chat_app/services/firestore_services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
@@ -102,7 +101,7 @@ class ProfileController extends GetxController {
               child: Text("Cancel"),
             ),
             TextButton(
-              style: TextButton.styleFrom(foregroundColor: Colors.redAccent),
+              style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
               onPressed: () => Get.back(result: true),
               child: Text("Delete", style: TextStyle(color: Colors.white)),
             ),

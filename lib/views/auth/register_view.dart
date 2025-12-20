@@ -21,6 +21,7 @@ class _RegisterViewState extends State<RegisterView> {
   final _passwordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
   final _displayNameController = TextEditingController();
+  final FocusNode confirmFocusNode = FocusNode();
   final AuthController _authController = Get.find<AuthController>();
   bool _obsecurePassword = true;
   bool _obsecureConfirmPassword = true;
@@ -69,6 +70,7 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   SizedBox(height: 40),
                   TextFormField(
+                    autofocus: true,
                     controller: _displayNameController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -78,13 +80,14 @@ class _RegisterViewState extends State<RegisterView> {
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
-                        return 'Please enter your email.';
+                        return 'Please enter your name.';
                       }
                       return null;
                     },
                   ),
                   SizedBox(height: 16),
                   TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -105,6 +108,8 @@ class _RegisterViewState extends State<RegisterView> {
                   SizedBox(height: 16),
                   TextFormField(
                     controller: _passwordController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+
                     obscureText: _obsecurePassword,
                     decoration: InputDecoration(
                       labelText: 'Password',
@@ -135,6 +140,8 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   SizedBox(height: 16),
                   TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    focusNode: confirmFocusNode,
                     controller: _confirmpasswordController,
                     obscureText: _obsecureConfirmPassword,
                     decoration: InputDecoration(
@@ -176,6 +183,7 @@ class _RegisterViewState extends State<RegisterView> {
                             : () {
                                 if (_formKey.currentState?.validate() ??
                                     false) {
+                                  confirmFocusNode.unfocus();
                                   _authController.registerWithEmailAndPassword(
                                     _emailController.text.trim(),
                                     _passwordController.text.trim(),
