@@ -1,5 +1,4 @@
 import 'package:chat_app/controllers/auth_controller.dart';
-import 'package:chat_app/services/auth_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,13 +49,17 @@ class ChangePasswordController extends GetxController {
     try {
       _isLoading.value = true;
       _error.value = '';
-      final AuthServices _authServices = AuthServices();
 
       final user = FirebaseAuth.instance.currentUser;
       if (user == null) {
         throw Exception("No User logged in");
       }
+      final credentials = EmailAuthProvider.credential(
+        email: user.email!,
+        password: currentPasswordController.text,
+      );
 
+      await user.reauthenticateWithCredential(credentials);
       await user.updatePassword(newPasswordController.text);
 
       Get.snackbar(
@@ -69,7 +72,7 @@ class ChangePasswordController extends GetxController {
       currentPasswordController.clear();
       newPasswordController.clear();
       confirmPasswordController.clear();
-      _authServices.signOut();
+      Get.back();
     } on FirebaseAuthException catch (e) {
       String errorMessage;
       switch (e.code) {
@@ -102,7 +105,9 @@ class ChangePasswordController extends GetxController {
         _error.value,
         backgroundColor: Colors.red.withOpacity(.1),
         colorText: Colors.red,
-        duration: Duration(seconds: 4),
+        duration: Duration(seconds: 4
+        
+        ),
       );
     } finally {
       _isLoading.value = false;
