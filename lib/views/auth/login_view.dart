@@ -113,7 +113,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
-                        return 'Please enter your email.';
+                        return 'Please enter your password.';
                       }
                       if (value!.length < 6) {
                         return "Password must be at least 6 characters.";

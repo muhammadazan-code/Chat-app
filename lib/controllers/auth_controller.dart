@@ -94,7 +94,7 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       _error.value = e.toString();
-      Get.snackbar('Error', 'Failed to Create Account');
+      Get.snackbar('Error', 'Failed to Create Account ${_error.value}');
       if (kDebugMode) {
         print(e.toString());
       }

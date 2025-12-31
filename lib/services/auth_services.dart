@@ -1,6 +1,7 @@
 import 'package:chat_app/models/user_model.dart';
 import 'package:chat_app/services/firestore_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class AuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -57,6 +58,9 @@ class AuthServices {
       }
       return null;
     } catch (e) {
+      if (kDebugMode) {
+        print("$e Error");
+      }
       throw Exception("Failed to Register: ${e.toString()}");
     }
   }
