@@ -71,6 +71,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   SizedBox(height: 40),
                   TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     autofocus: true,
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -93,6 +94,7 @@ class _LoginViewState extends State<LoginView> {
                   TextFormField(
                     focusNode: focusNode,
                     controller: _passwordController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     obscureText: _isObsecurePassword,
                     decoration: InputDecoration(
                       labelText: 'Password',

@@ -62,7 +62,7 @@ class AuthController extends GetxController {
       );
       if (userModel != null) {
         _userModel.value = userModel;
-        Get.offAllNamed(AppRoutes.profileView);
+        Get.offAllNamed(AppRoutes.mainView);
       }
     } catch (e) {
       _error.value = e.toString();
@@ -90,7 +90,7 @@ class AuthController extends GetxController {
       );
       if (userModel != null) {
         _userModel.value = userModel;
-        Get.offAllNamed(AppRoutes.loginView);
+        Get.offAllNamed(AppRoutes.mainView);
       }
     } catch (e) {
       _error.value = e.toString();
