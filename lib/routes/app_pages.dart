@@ -1,7 +1,9 @@
+import 'package:chat_app/controllers/main_controller.dart';
 import 'package:chat_app/controllers/profile_controller.dart';
 import 'package:chat_app/routes/app_routes.dart';
 import 'package:chat_app/views/auth/forgot_password_view.dart';
 import 'package:chat_app/views/auth/login_view.dart';
+import 'package:chat_app/views/auth/main_view.dart';
 import 'package:chat_app/views/auth/profile/change_password_view.dart';
 import 'package:chat_app/views/auth/profile/profile_view.dart';
 import 'package:chat_app/views/auth/register_view.dart';
@@ -23,13 +25,13 @@ class AppPages {
     //     Get.put(HomeController());
     //   }),
     // ),
-    // GetPage(
-    //   name: AppRoutes.main,
-    //   page: () => const MainView(),
-    //   binding: BindingsBuilder(() {
-    //     Get.put(MainController());
-    //   }),
-    // ),
+    GetPage(
+      name: AppRoutes.mainView,
+      page: () => MainView(),
+      binding: BindingsBuilder(() {
+        Get.put(MainController());
+      }),
+    ),
     GetPage(
       name: AppRoutes.forgotPasswordView,
       page: () => const ForgotPasswordView(),

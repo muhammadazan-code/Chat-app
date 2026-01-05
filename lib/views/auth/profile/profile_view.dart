@@ -11,10 +11,10 @@ class ProfileView extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
-        leading: IconButton(
-          onPressed: () => Get.back(),
-          icon: Icon(Icons.arrow_back),
+        centerTitle: true,
+        title: Text(
+          "Profile",
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         actions: [
           Obx(
