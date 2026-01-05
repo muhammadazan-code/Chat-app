@@ -4,6 +4,7 @@ enum NotificationsType {
   friendRequestAccept,
   friendRequestDeclined,
   friendReceived,
+  friendRemoved,
 }
 
 class NotificationModel {

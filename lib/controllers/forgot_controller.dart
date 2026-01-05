@@ -1,15 +1,14 @@
 import 'package:chat_app/services/auth_services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordController extends GetxController {
   final AuthServices _authServices = AuthServices();
   final TextEditingController emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  RxBool _isLoading = false.obs;
-  RxString _error = "".obs;
-  RxBool _emailSent = false.obs;
+  final RxBool _isLoading = false.obs;
+  final RxString _error = "".obs;
+  final RxBool _emailSent = false.obs;
 
   bool get isLoading => _isLoading.value;
   String get error => _error.value;

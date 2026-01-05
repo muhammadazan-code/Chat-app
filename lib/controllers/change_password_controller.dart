@@ -1,5 +1,6 @@
 import 'package:chat_app/controllers/auth_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -58,7 +59,9 @@ class ChangePasswordController extends GetxController {
         email: user.email!,
         password: currentPasswordController.text,
       );
-
+      if (kDebugMode) {
+        print(credentials);
+      }
       await user.reauthenticateWithCredential(credentials);
       await user.updatePassword(newPasswordController.text);
 
@@ -105,9 +108,7 @@ class ChangePasswordController extends GetxController {
         _error.value,
         backgroundColor: Colors.red.withOpacity(.1),
         colorText: Colors.red,
-        duration: Duration(seconds: 4
-        
-        ),
+        duration: Duration(seconds: 4),
       );
     } finally {
       _isLoading.value = false;
