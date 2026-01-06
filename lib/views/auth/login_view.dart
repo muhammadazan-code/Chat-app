@@ -19,7 +19,7 @@ class _LoginViewState extends State<LoginView> {
   final _emailController = TextEditingController();
   final FocusNode focusNode = FocusNode();
   final _passwordController = TextEditingController();
-  final AuthController _authController = Get.find<AuthController>();
+  final AuthController _authController = Get.put(AuthController());
   bool _isObsecurePassword = true;
 
   @override

@@ -23,34 +23,34 @@ class AuthController extends GetxController {
   void onInit() {
     super.onInit();
     _user.bindStream(_authService.authStateChanges);
-    // ever(_user, _handleAuthStateChange);
+    ever(_user, _handleAuthStateChange);
   }
 
-  // void _handleAuthStateChange(User? user) {
-  //   if (user == null) {
-  //     if (Get.currentRoute != AppRoutes.loginView) {
-  //       Get.offAllNamed(AppRoutes.loginView);
-  //     }
-  //   } else {
-  //     if (Get.currentRoute != AppRoutes.profile) {
-  //       Get.offAllNamed(AppRoutes.profile);
-  //     }
-  //   }
-  //   if (!_isInitialized.value) {
-  //     _isInitialized.value = true;
-  //   }
-  // }
+  void _handleAuthStateChange(User? user) {
+    if (user == null) {
+      if (Get.currentRoute != AppRoutes.loginView) {
+        Get.offAllNamed(AppRoutes.loginView);
+      }
+    } else {
+      if (Get.currentRoute != AppRoutes.mainView) {
+        Get.offAllNamed(AppRoutes.mainView);
+      }
+    }
+    if (!_isInitialized.value) {
+      _isInitialized.value = true;
+    }
+  }
 
-  // void checkInitialAuthState() {
-  //   final currentUser = FirebaseAuth.instance.currentUser;
-  //   if (currentUser != null) {
-  //     _user.value = currentUser;
-  //     Get.offAllNamed(AppRoutes.mainView);
-  //   } else {
-  //     Get.offAllNamed(AppRoutes.loginView);
-  //   }
-  //   _isInitialized.value = true;
-  // }
+  void checkInitialAuthState() {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      _user.value = currentUser;
+      Get.offAllNamed(AppRoutes.mainView);
+    } else {
+      Get.offAllNamed(AppRoutes.loginView);
+    }
+    _isInitialized.value = true;
+  }
 
   Future<void> signInWithEmailAndPassword(String email, String password) async {
     try {

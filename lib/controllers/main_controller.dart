@@ -1,4 +1,5 @@
 import 'package:chat_app/controllers/profile_controller.dart';
+import 'package:chat_app/controllers/user_list_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,7 @@ class MainController extends GetxController {
     // Init all required controllers
     // Get.lazyPut(() => HomeController());
     // Get.lazyPut(() => FriendController());
-    // Get.lazyPut(() => UsersListController());
+    Get.lazyPut(() => UsersListController());
     Get.lazyPut(() => ProfileController());
   }
 

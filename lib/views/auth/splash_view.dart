@@ -38,11 +38,10 @@ class _SplashViewState extends State<SplashView>
 
   void _checkAuthAndNavigation() async {
     await Future.delayed(Duration(seconds: 5));
-    final authController = Get.put(AuthController(), permanent: true);
-    await Future.delayed(Duration(milliseconds: 500));
+    final authController = Get.put(AuthController());
+    // await Future.delayed(Duration(milliseconds: 500));
 
     if (authController.isAuthenticated) {
-      // Get.offAllNamed(AppRoutes.mainView);
       Get.offAllNamed(AppRoutes.mainView);
     } else {
       Get.offAllNamed(AppRoutes.loginView);

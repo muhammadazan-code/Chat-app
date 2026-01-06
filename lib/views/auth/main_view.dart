@@ -1,20 +1,22 @@
+import 'package:chat_app/controllers/auth_controller.dart';
 import 'package:chat_app/controllers/main_controller.dart';
 import 'package:chat_app/theme/app_theme.dart';
 import 'package:chat_app/views/auth/profile/profile_view.dart';
+import 'package:chat_app/views/find_people_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 class MainView extends GetView<MainController> {
   @override
   Widget build(BuildContext context) {
+    final authController = Get.put(AuthController());
     return Scaffold(
       body: PageView(
         controller: controller.pageController,
         onPageChanged: controller.onPageChanged,
         children: [
           // HomeView(), FriendView(), UsersListView(),
-          Container(), Container(), Container(), ProfileView(),
+          Container(), Container(), FindPeopleView(), ProfileView(),
         ],
       ),
       bottomNavigationBar: Obx(
