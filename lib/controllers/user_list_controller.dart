@@ -13,6 +13,7 @@ import 'package:uuid/uuid.dart';
 class UsersListController extends GetxController {
   final FirestoreServices _firestoreServices = FirestoreServices();
   final AuthController _authController = Get.find<AuthController>();
+  final TextEditingController searchController = TextEditingController();
   final Uuid _uuid = Uuid();
 
   final RxList<UserModel> _users = <UserModel>[].obs;

@@ -1,5 +1,7 @@
+import 'package:chat_app/controllers/friends_controller.dart';
 import 'package:chat_app/controllers/main_controller.dart';
 import 'package:chat_app/controllers/profile_controller.dart';
+import 'package:chat_app/controllers/user_list_controller.dart';
 import 'package:chat_app/routes/app_routes.dart';
 import 'package:chat_app/views/auth/forgot_password_view.dart';
 import 'package:chat_app/views/auth/login_view.dart';
@@ -8,6 +10,8 @@ import 'package:chat_app/views/auth/profile/change_password_view.dart';
 import 'package:chat_app/views/auth/profile/profile_view.dart';
 import 'package:chat_app/views/auth/register_view.dart';
 import 'package:chat_app/views/auth/splash_view.dart';
+import 'package:chat_app/views/find_people_view.dart';
+import 'package:chat_app/views/friend_view.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -47,13 +51,13 @@ class AppPages {
         Get.put(ProfileController());
       }),
     ),
-    // GetPage(
-    //   name: AppRoutes.usersList,
-    //   page: () => const UserListView(),
-    //   binding: BindingsBuilder(() {
-    //     Get.put(UserListController());
-    //   }),
-    // ),
+    GetPage(
+      name: AppRoutes.usersListView,
+      page: () => FindPeopleView(),
+      binding: BindingsBuilder(() {
+        Get.put(UsersListController());
+      }),
+    ),
     // GetPage(
     //   name: AppRoutes.friendRequest,
     //   page: () => const FriendsRequestView(),
@@ -61,13 +65,13 @@ class AppPages {
     //     Get.put(FriendRequestController());
     //   }),
     // ),
-    // GetPage(
-    //   name: AppRoutes.friends,
-    //   page: () => const FriendsView(),
-    //   binding: BindingsBuilder(() {
-    //     Get.put(FriendController());
-    //   }),
-    // ),
+    GetPage(
+      name: AppRoutes.friendsView,
+      page: () => FriendView(),
+      binding: BindingsBuilder(() {
+        Get.put(FriendsController());
+      }),
+    ),
     // GetPage(
     //   name: AppRoutes.notifications,
     //   page: () => const NotificationsView(),
